@@ -17,8 +17,8 @@ views:
       The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster
 
 roles:
-  - { name: hadoop-common, cardinality: n }
-  - { name: hdfs-namenode, cardinality: 1 }
-  - { name: hdfs-datanode, cardinality: n }
-  - { name: yarn-resourcemanager, cardinality: 1 }
-  - { name: yarn-nodemanager, cardinality: n }
+  - { name: common, cardinality: n }
+  - { name: namenode, cardinality: 1 }
+  - { name: datanode, cardinality: n }
+  - { name: resourcemanager, cardinality: 1 }
+  - { name: nodemanager, cardinality: n }

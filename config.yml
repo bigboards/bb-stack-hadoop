@@ -1,24 +1,24 @@
-- hosts: all
+- hosts: common
   sudo: yes
   roles:
     - { role: hadoop-common }
 
-- hosts: namenodes
+- hosts: namenode
   sudo: yes
   tasks:
     - service: name=hadoop-hdfs-namenode state=restarted
 
-- hosts: datanodes
+- hosts: datanode
   sudo: yes
   tasks:
     - service: name=hadoop-hdfs-datanode state=restarted
 
-- hosts: resourcemanagers
+- hosts: resourcemanager
   sudo: yes
   tasks:
     - service: name=hadoop-yarn-resourcemanager state=restarted
 
-- hosts: nodemanagers
+- hosts: nodemanager
   sudo: yes
   tasks:
     - service: name=hadoop-yarn-nodemanager state=restarted

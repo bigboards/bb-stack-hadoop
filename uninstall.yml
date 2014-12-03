@@ -1,24 +1,24 @@
-- hosts: hadoop-common
+- hosts: common
   sudo: yes
   roles:
     - { role: hadoop-common, mode: 'uninstall' }
 
-- hosts: hdfs-namenode
+- hosts: namenode
   sudo: yes
   roles:
     - { role: hdfs-namenode, mode: 'uninstall' }
 
-- hosts: hdfs-datanode
+- hosts: datanode
   sudo: yes
   roles:
     - { role: hdfs-datanode, mode: 'uninstall' }
 
-- hosts: yarn-resourcemanager
+- hosts: resourcemanager
   sudo: yes
   roles:
     - { role: yarn-resourcemanager, mode: 'uninstall' }
 
-- hosts: yarn-nodemanager
+- hosts: nodemanager
   sudo: yes
   roles:
     - { role: yarn-nodemanager, mode: 'uninstall' }
