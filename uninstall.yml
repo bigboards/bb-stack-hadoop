@@ -22,3 +22,8 @@
   sudo: yes
   roles:
     - { role: yarn-nodemanager, mode: 'uninstall' }
+
+- hosts: localhost
+  sudo: yes
+  tasks:
+    - file: state=abscent path=/opt/bb/tints.d/stack/{{ tint.owner }}/{{ tint.id }}
