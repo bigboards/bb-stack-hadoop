@@ -1,0 +1,27 @@
+[hadoop-common]
+alice-n1	ansible_ssh_user=bb
+alice-n2	ansible_ssh_user=bb
+alice-n3	ansible_ssh_user=bb
+alice-n4	ansible_ssh_user=bb
+alice-n5	ansible_ssh_user=bb
+alice-n6	ansible_ssh_user=bb
+
+[yarn-nodemanager]
+alice-n2	ansible_ssh_user=bb
+alice-n3	ansible_ssh_user=bb
+alice-n4	ansible_ssh_user=bb
+alice-n5	ansible_ssh_user=bb
+alice-n6	ansible_ssh_user=bb
+
+[yarn-resourcemanager]
+alice-n1	ansible_ssh_user=bb
+
+[hdfs-namenode]
+alice-n1	ansible_ssh_user=bb
+
+[hdfs-datanode]
+alice-n2	ansible_ssh_user=bb
+alice-n3	ansible_ssh_user=bb
+alice-n4	ansible_ssh_user=bb
+alice-n5	ansible_ssh_user=bb
+alice-n6	ansible_ssh_user=bb

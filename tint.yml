@@ -1,0 +1,24 @@
+---
+id: hadoop
+name: Hadoop 2.5.1
+owner: bigboards
+type: stack
+description: The Apache Hadoop stack including HDFS and Yarn
+views:
+  - id: yarn-web
+    label: Yarn
+    url: http://{{external_ip}}:8088/
+    description: >
+      The Yarn Web Console. It allows you to master the applications running within Yarn.
+  - id: hdfs-nn
+    label: HDFS NameNode
+    url: http://{{external_ip}}:50070/
+    description: >
+      The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster
+
+roles:
+  - { name: hadoop-common, cardinality: n }
+  - { name: hdfs-namenode, cardinality: 1 }
+  - { name: hdfs-datanode, cardinality: n }
+  - { name: yarn-resourcemanager, cardinality: 1 }
+  - { name: yarn-nodemanager, cardinality: n }

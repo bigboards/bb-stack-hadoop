@@ -1,0 +1,59 @@
+---
+- name: check if the container exists
+  shell: docker inspect hadoop-hdfs-namenode 2>&1
+  ignore_errors: yes
+  register: container
+
+- name: make sure the container exists
+  shell: >
+    docker run
+    -d
+    -p 8020:8020
+    -p 50070:50070
+    -p 50470:50470
+    --name hadoop-hdfs-namenode
+    --net=host
+    --expose 8020
+    --expose 50070
+    --expose 50470
+    --volume /data/{{ tint.owner }}/{{ tint.id }}/config:${HADOOP_PREFIX}/etc/hadoop
+    --volume /data/{{ tint.owner }}/{{ tint.id }}/data/hdfs/nn:/data/hadoop/dfs/nn
+    --add-host resourcemanager:{{ hostvars[hosts.resourcemanager]['ansible_eth0']['ipv4']['address']}}
+    --add-host namenode:{{ hostvars[hosts.namenode]['ansible_eth0']['ipv4']['address']}}
+    --add-host {{ ansible_local.hex.name }}-n1:{{hostvars[ansible_local.hex.name + '-n1']['ansible_eth0']['ipv4']['address']}}
+    --add-host {{ ansible_local.hex.name }}-n2:{{hostvars[ansible_local.hex.name + '-n2']['ansible_eth0']['ipv4']['address']}}
+    --add-host {{ ansible_local.hex.name }}-n3:{{hostvars[ansible_local.hex.name + '-n3']['ansible_eth0']['ipv4']['address']}}
+    --add-host {{ ansible_local.hex.name }}-n4:{{hostvars[ansible_local.hex.name + '-n4']['ansible_eth0']['ipv4']['address']}}
+    --add-host {{ ansible_local.hex.name }}-n5:{{hostvars[ansible_local.hex.name + '-n5']['ansible_eth0']['ipv4']['address']}}
+    --add-host {{ ansible_local.hex.name }}-n6:{{hostvars[ansible_local.hex.name + '-n6']['ansible_eth0']['ipv4']['address']}}
+    bigboards/hadoop-armv7l $HADOOP_PREFIX/bin/hdfs --config $HADOOP_CONF_DIR namenode
+  environment:
+    USER: "root"
+    HADOOP_PREFIX: "/opt/hadoop"
+    HADOOP_COMMON_HOME: "/opt/hadoop"
+    HADOOP_HDFS_HOME: "/opt/hadoop"
+    HADOOP_MAPRED_HOME: "/opt/hadoop"
+    HADOOP_YARN_HOME: "/opt/hadoop"
+    HADOOP_CONF_DIR: "/opt/hadoop/etc/hadoop"
+    YARN_CONF_DIR: "/opt/hadoop/etc/hadoop"
+  when: container.stdout.find('"Id":') == -1
+
+- name: make sure the namenode has been formatted
+  shell: >
+    docker exec -d hadoop-hdfs-namenode $HADOOP_PREFIX/bin/hadoop --config $HADOOP_CONF_DIR namenode -format
+  environment:
+    USER: "root"
+    HADOOP_PREFIX: "/opt/hadoop"
+    HADOOP_COMMON_HOME: "/opt/hadoop"
+    HADOOP_HDFS_HOME: "/opt/hadoop"
+    HADOOP_MAPRED_HOME: "/opt/hadoop"
+    HADOOP_YARN_HOME: "/opt/hadoop"
+    HADOOP_CONF_DIR: "/opt/hadoop/etc/hadoop"
+    YARN_CONF_DIR: "/opt/hadoop/etc/hadoop"
+  when: container.stdout.find('"Id":') == -1
+
+- name: make sure the init file is available
+  template: src=etc/init/hadoop-hdfs-namenode.conf dest=/etc/init/hadoop-hdfs-namenode.conf
+
+- name: make sure the service is started at boot
+  service: name=hadoop-hdfs-namenode enabled=yes state=started

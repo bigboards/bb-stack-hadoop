@@ -1,0 +1,16 @@
+- name: check if the container exists
+  shell: docker inspect hadoop-hdfs-namenode 2>&1
+  ignore_errors: yes
+  register: container
+
+- name: make sure the service is stopped
+  service: name=hadoop-hdfs-namenode enabled=no state=stopped
+  when: container.stdout.find('"Id":') != -1
+
+- name: make sure the init file is removed
+  file: path=/etc/init/hadoop-hdfs-namenode.conf state=absent
+  when: container.stdout.find('"Id":') != -1
+
+- name: make sure the container is removed
+  shell: docker rm -f hadoop-hdfs-namenode
+  when: container.stdout.find('"Id":') != -1

@@ -1,0 +1,24 @@
+- hosts: hadoop-common
+  sudo: yes
+  roles:
+    - { role: hadoop-common, mode: 'install' }
+
+- hosts: hdfs-namenode
+  sudo: yes
+  roles:
+    - { role: hdfs-namenode, mode: 'install' }
+
+- hosts: hdfs-datanode
+  sudo: yes
+  roles:
+    - { role: hdfs-datanode, mode: 'install' }
+
+- hosts: yarn-resourcemanager
+  sudo: yes
+  roles:
+    - { role: yarn-resourcemanager, mode: 'install' }
+
+- hosts: yarn-nodemanager
+  sudo: yes
+  roles:
+    - { role: yarn-nodemanager, mode: 'install' }
