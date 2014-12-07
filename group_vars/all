@@ -3,5 +3,5 @@ tint:
   id: hadoop
 
 hosts:
-  namenode: node-1
-  resourcemanager: node-1
+  namenode: "{{ hex.name }}-n1"
+  resourcemanager: "{{ hex.name }}-n1"
