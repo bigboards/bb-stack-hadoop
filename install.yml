@@ -27,4 +27,4 @@
   sudo: yes
   tasks:
     - name: generate the mapping file
-      template: src=mapping.yml.j2 dest=mapping.yml
+      template: src=mapping.yml.j2 dest=./mapping.yml
