@@ -17,8 +17,11 @@ views:
       The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster
 
 roles:
-  - { name: common, cardinality: n }
-  - { name: namenode, cardinality: 1 }
-  - { name: datanode, cardinality: n }
-  - { name: resourcemanager, cardinality: 1 }
-  - { name: nodemanager, cardinality: n }
+  - name: namenode
+    cardinality: 1
+  - name: datanode
+    cardinality: n
+  - name: resourcemanager
+    cardinality: 1
+  - name: nodemanager
+    cardinality: n

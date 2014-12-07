@@ -1,7 +1,0 @@
-tint:
-  owner: bigboards
-  id: hadoop
-
-hosts:
-  namenode: alice-n1
-  resourcemanager: alice-n1

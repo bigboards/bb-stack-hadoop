@@ -1,4 +1,4 @@
-- hosts: common
+- hosts: all
   sudo: yes
   roles:
     - { role: hadoop-common, mode: 'install' }
