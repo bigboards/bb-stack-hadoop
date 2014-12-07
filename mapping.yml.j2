@@ -1,0 +1,23 @@
+- role: nodemanager
+  hosts:
+    - {{hex.name}}-n2
+    - {{hex.name}}-n3
+    - {{hex.name}}-n4
+    - {{hex.name}}-n5
+    - {{hex.name}}-n6
+
+- role: resourcemanager
+  hosts:
+    - {{hex.name}}-n1
+
+- role: namenode
+  hosts:
+    - {{hex.name}}-n1
+
+- role: datanode
+  hosts:
+    - {{hex.name}}-n2
+    - {{hex.name}}-n3
+    - {{hex.name}}-n4
+    - {{hex.name}}-n5
+    - {{hex.name}}-n6

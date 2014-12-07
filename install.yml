@@ -22,3 +22,9 @@
   sudo: yes
   roles:
     - { role: yarn-nodemanager, mode: 'install' }
+
+- hosts: localhost
+  sudo: yes
+  tasks:
+    - name: generate the mapping file
+      template: src=mapping.yml.j2 dest=mapping.yml
