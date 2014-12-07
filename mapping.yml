@@ -1,0 +1,23 @@
+- role: 
+  hosts:
+    - alice-n1
+    
+- role: resourcemanager
+  hosts:
+    - alice-n1
+
+- role: datanode
+  hosts: 
+    - alice-n2
+    - alice-n3
+    - alice-n4
+    - alice-n5
+    - alice-n6
+
+- role: nodemanager
+  hosts: 
+    - alice-n2
+    - alice-n3
+    - alice-n4
+    - alice-n5
+    - alice-n6
