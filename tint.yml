@@ -7,12 +7,12 @@ description: The Apache Hadoop stack including HDFS and Yarn
 views:
   - id: yarn-web
     label: Yarn
-    url: http://{{external_ip}}:8088/
+    url: http://{{nodes[hex.name + "-v1"].ip}}:8088/
     description: >
       The Yarn Web Console. It allows you to master the applications running within Yarn.
   - id: hdfs-nn
     label: HDFS NameNode
-    url: http://{{external_ip}}:50070/
+    url: http://{{nodes[hex.name + "-v1"].ip}}:50070/
     description: >
       The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster
 
