@@ -1,9 +1,5 @@
 ---
-id: hadoop
-name: Apache Hadoop
-owner: bigboards
 type: stack
-description: the Apache Hadoop Platform
 views:
   - id: yarn-web
     label: Yarn
