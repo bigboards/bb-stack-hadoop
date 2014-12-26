@@ -26,4 +26,4 @@
 - hosts: localhost
   sudo: yes
   tasks:
-    - file: state=abscent path=/opt/bb/tints.d/stack/{{ tint.owner }}/{{ tint.id }}
+    - file: state=absent path=/opt/bb/tints.d/stack/{{ tint.owner }}/{{ tint.id }}
