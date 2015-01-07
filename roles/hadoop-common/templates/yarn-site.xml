@@ -42,7 +42,7 @@
 
   <property>
     <name>yarn.resourcemanager.hostname</name>
-    <value>0.0.0.0</value>
+    <value>{{ groups['resourcemanager'][0]['ansible_eth0']['ipv4']['address'] }}</value>
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>
@@ -58,13 +58,17 @@
   </property>
   <property>
     <name>yarn.resourcemanager.admin.address</name>
-    <value>${yarn.resourcemanager.hostname}:8033</value>
+    <value>0.0.0.0:8033</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address</name>
-    <value>${yarn.resourcemanager.hostname}:8088</value>
+    <value>0.0.0.0:8088</value>
   </property>
 
+  <property>
+    <name>yarn.nodemanager.hostname</name>
+    <value>{{ansible_hostname}}</value>
+  </property>
   <property>
     <name>yarn.nodemanager.localizer.address</name>
     <value>${yarn.nodemanager.hostname}:8040</value>
@@ -75,7 +79,7 @@
   </property>
   <property>
     <name>yarn.nodemanager.webapp.address</name>
-    <value>${yarn.nodemanager.hostname}:8042</value>
+    <value>0.0.0.0:8042</value>
   </property>
 
 
