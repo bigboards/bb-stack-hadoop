@@ -1,23 +1,57 @@
----
-type: stack
-views:
-  - id: yarn-web
-    label: Yarn
-    url: http://{{nodes[hex.name + "-n1"].ip}}:8088/
-    description: >
-      The Yarn Web Console. It allows you to master the applications running within Yarn.
-  - id: hdfs-nn
-    label: HDFS NameNode
-    url: http://{{nodes[hex.name + "-n1"].ip}}:50070/
-    description: >
-      The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster
-
-roles:
-  - name: namenode
-    cardinality: 1
-  - name: datanode
-    cardinality: n
-  - name: resourcemanager
-    cardinality: 1
-  - name: nodemanager
-    cardinality: n
+stack:
+  views:
+    - label: "Yarn"
+      url: "http:{{ nodes[hex.name + '-n1'].ip }}-n1:8088/"
+      description: "The Yarn Web Console. It allows you to master the applications running within Yarn."
+    - label: "HDFS"
+      url: "http:{{ nodes[hex.name + '-n1'].ip }}-n1:50070/"
+      description: "The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster"
+  containers:
+    namenode:
+      image: "bigboards/hadoop-armv7l"
+      command: "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop namenode"
+      ports:
+        - 8020
+        - 50070
+        - 50470
+      config: "/opt/hadoop/etc/hadoop"
+      post_install: "post_install.yml"
+    datanode:
+      image: "bigboards/hadoop-armv7l"
+      command: "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop datanode"
+      ports:
+        - 1004
+        - 1006
+        - 50010
+        - 50020
+        - 50075
+      config: "/opt/hadoop/etc/hadoop"
+    resourcemanager:
+      image: "bigboards/hadoop-armv7l"
+      command: "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop resourcemanager"
+      ports:
+        - 8030
+        - 8031
+        - 8032
+        - 8033
+        - 8088
+      config: "/opt/hadoop/etc/hadoop"
+    nodemanager:
+      image: "bigboards/hadoop-armv7l"
+      command: "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop nodemanager"
+      ports:
+        - 8040
+        - 8041
+        - 8042
+      config: "/opt/hadoop/etc/hadoop"
+  groups:
+    hadoop_masters:
+      runs_on: "n1"
+      containers:
+        - "namenode"
+        - "resourcemanager"
+    hadoop_slaves:
+      runs_on: "all,!n1"
+      containers:
+        - "datanode"
+        - "nodemanager"

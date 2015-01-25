@@ -42,7 +42,7 @@
 
   <property>
     <name>yarn.resourcemanager.hostname</name>
-    <value>{{ hostvars[groups['resourcemanager'][0]]['ansible_eth0']['ipv4']['address'] }}</value>
+    <value>{{ hostvars[groups['hadoop_masters'][0]]['ansible_eth0']['ipv4']['address'] }}</value>
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>

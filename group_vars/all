@@ -1,7 +1,0 @@
-tint:
-  owner: bigboards
-  id: hadoop
-
-hosts:
-  namenode: "{{ hex.name }}-n1"
-  resourcemanager: "{{ hex.name }}-n1"
