@@ -9,7 +9,7 @@ stack:
   containers:
     namenode:
       image: "bigboards/hadoop-armv7l"
-      command: "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop namenode"
+      command: "/opt/hadoop/bin/hdfs-namenode-wrapper.sh"
       ports:
         - 8020
         - 50070
