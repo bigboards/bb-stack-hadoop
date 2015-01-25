@@ -1,4 +1,1 @@
-- hosts: n1
-  sudo: yes
-  tasks:
-    - command: docker exec -it /opt/hadoop/bin/hadoop --config /opt/hadoop/etc/hadoop namenode -format creates=/data/bb-stack-hadoop/namenode
+- command: docker exec -it /opt/hadoop/bin/hadoop --config /opt/hadoop/etc/hadoop namenode -format creates=/data/bb-stack-hadoop/namenode
