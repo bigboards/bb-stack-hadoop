@@ -24,7 +24,7 @@
   </property>
   <property>
     <name>hadoop.tmp.dir</name>
-    <value>/data/hadoop/tmp</value>
+    <value>/data/tmp</value>
   </property>
   <property>
     <name>hadoop.proxyuser.hue.hosts</name>

@@ -35,11 +35,11 @@
     </property>
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>/data/hadoop/dfs/nn</value>
+        <value>/data/dfs/nn</value>
     </property>
     <property>
         <name>dfs.datanode.data.dir</name>
-        <value>/data/hadoop/dfs/dn</value>
+        <value>/data/dfs/dn</value>
     </property>
     <property>
         <name>dfs.webhdfs.enabled</name>

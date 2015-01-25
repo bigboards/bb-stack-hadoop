@@ -99,15 +99,15 @@
 
   <property>
     <name>yarn.nodemanager.local-dirs</name>
-    <value>/data/hadoop/yarn/local</value>
+    <value>/data/yarn/local</value>
   </property>
   <property>
     <name>yarn.nodemanager.log-dirs</name>
-    <value>/data/hadoop/yarn/logs</value>
+    <value>/data/yarn/logs</value>
   </property>
   <property>
     <name>yarn.nodemanager.remote-app-log-dir</name>
-    <value>/data/hadoop/yarn/apps</value>
+    <value>/data/yarn/apps</value>
   </property>
 
 
