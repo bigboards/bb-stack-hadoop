@@ -51,7 +51,7 @@ stack:
         - "namenode"
         - "resourcemanager"
     hadoop_slaves:
-      runs_on: "all,!n1"
+      runs_on: "all:!n1"
       containers:
         - "datanode"
         - "nodemanager"
