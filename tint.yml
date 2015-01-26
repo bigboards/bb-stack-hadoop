@@ -15,6 +15,7 @@ stack:
         - 50070
         - 50470
       config: "/opt/hadoop/etc/hadoop"
+      pre_install: "scripts/namenode/pre_install.yml"
     datanode:
       image: "bigboards/hadoop-armv7l"
       command: "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop datanode"
