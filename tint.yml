@@ -45,12 +45,12 @@ stack:
         - 8042
       config: "/opt/hadoop/etc/hadoop"
   groups:
-    hadoop_masters:
+    - name: "hadoop_masters"
       runs_on: "n1"
       containers:
         - "namenode"
         - "resourcemanager"
-    hadoop_slaves:
+    - name: "hadoop_slaves"
       runs_on: "all:!n1"
       containers:
         - "datanode"
