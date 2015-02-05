@@ -14,7 +14,9 @@ stack:
         - 8020
         - 50070
         - 50470
-      config: "/opt/hadoop/etc/hadoop"
+      config: 
+        host_path: "namenode"
+        container_path: "/opt/hadoop/etc/hadoop"
       pre_install: "scripts/namenode/pre_install.yml"
     datanode:
       image: "bigboards/hadoop-armv7l"
@@ -25,7 +27,9 @@ stack:
         - 50010
         - 50020
         - 50075
-      config: "/opt/hadoop/etc/hadoop"
+      config: 
+        host_path: "all"
+        container_path: "/opt/hadoop/etc/hadoop"
     resourcemanager:
       image: "bigboards/hadoop-armv7l"
       command: "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop resourcemanager"
@@ -35,7 +39,9 @@ stack:
         - 8032
         - 8033
         - 8088
-      config: "/opt/hadoop/etc/hadoop"
+      config: 
+        host_path: "all"
+        container_path: "/opt/hadoop/etc/hadoop"
     nodemanager:
       image: "bigboards/hadoop-armv7l"
       command: "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop nodemanager"
@@ -43,7 +49,9 @@ stack:
         - 8040
         - 8041
         - 8042
-      config: "/opt/hadoop/etc/hadoop"
+      config: 
+        host_path: "all"
+        container_path: "/opt/hadoop/etc/hadoop"
   groups:
     - name: "hadoop_masters"
       runs_on: "n1"
