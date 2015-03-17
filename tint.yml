@@ -1,3 +1,11 @@
+slug: bb-stack-hadoop
+name: Apache Hadoop
+description: Apache Hadoop delivers open-source software for reliable, scalable, distributed computing.
+type: stack
+owner:
+  username: bigboards
+  displayName: bigboards
+logo: https://bitbucket-assetroot.s3.amazonaws.com/c/photos/2014/Dec/17/1375413311-12-bb-stack-hadoop-logo_avatar.png
 stack:
   views:
     - label: "Yarn"
