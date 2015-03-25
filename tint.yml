@@ -9,10 +9,10 @@ logo: https://bitbucket-assetroot.s3.amazonaws.com/c/photos/2014/Dec/17/13754133
 stack:
   views:
     - label: "Yarn"
-      url: "http:{{'{{'}} nodes[hex.name + '-n1'].ip {{'}}'}}-n1:8088/"
+      url: "http://{{ nodes[hex.name + '-n1'].ip }}:8088/"
       description: "The Yarn Web Console. It allows you to master the applications running within Yarn."
     - label: "HDFS"
-      url: "http:{{'{{'}} nodes[hex.name + '-n1'].ip {{'}}'}}-n1:50070/"
+      url: "http://{{ nodes[hex.name + '-n1'].ip }}:50070/"
       description: "The Web Console for the HDFS NameNode. It gives you more details about the data stored on the cluster"
   containers:
     namenode:
