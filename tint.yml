@@ -36,7 +36,7 @@ stack:
         - 50020
         - 50075
       config: 
-        host_path: "all"
+        host_path: "datanode"
         container_path: "/opt/hadoop/etc/hadoop"
     resourcemanager:
       image: "bigboards/hadoop-armv7l"
@@ -48,7 +48,7 @@ stack:
         - 8033
         - 8088
       config: 
-        host_path: "all"
+        host_path: "resourcemanager"
         container_path: "/opt/hadoop/etc/hadoop"
     nodemanager:
       image: "bigboards/hadoop-armv7l"
@@ -58,7 +58,7 @@ stack:
         - 8041
         - 8042
       config: 
-        host_path: "all"
+        host_path: "nodemanager"
         container_path: "/opt/hadoop/etc/hadoop"
   groups:
     - name: "hadoop_masters"
