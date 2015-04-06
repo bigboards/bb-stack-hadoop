@@ -20,7 +20,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://{{ hostvars[groups['n1'][0]]['ansible_hostname'] }}:8020/</value>
+    <value>hdfs://{{ hostvars[groups['n1'][0]]['ansible_hostname'] }}.hex:8020/</value>
   </property>
   <property>
     <name>hadoop.tmp.dir</name>
