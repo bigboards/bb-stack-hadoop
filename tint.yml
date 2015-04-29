@@ -60,12 +60,31 @@ stack:
       config: 
         host_path: "nodemanager"
         container_path: "/opt/hadoop/etc/hadoop"
+    proxyserver:
+      image: "bigboards/hadoop-armv7l"
+      command: "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop proxyserver"
+      ports:
+        - 8080
+      config: 
+        host_path: "proxyserver"
+        container_path: "/opt/hadoop/etc/hadoop"
+    historyserver:
+      image: "bigboards/hadoop-armv7l"
+      command: "/opt/hadoop/bin/yarn --config /opt/hadoop/etc/hadoop historyserver"
+      ports:
+        - 10020
+        - 19888
+      config: 
+        host_path: "historyserver"
+        container_path: "/opt/hadoop/etc/hadoop"
   groups:
     - name: "hadoop_masters"
       runs_on: "n1"
       containers:
         - "namenode"
         - "resourcemanager"
+        - "proxyserver"
+        - "historyserver"
     - name: "hadoop_slaves"
       runs_on: "all:!n1"
       containers:
