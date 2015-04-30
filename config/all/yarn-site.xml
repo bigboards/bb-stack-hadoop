@@ -120,5 +120,10 @@
     <name>yarn.app.mapreduce.am.staging-dir</name>
     <value>/user</value>
   </property>
+  
+  <property>
+    <name>yarn.web-proxy.address</name>
+    <value>hostvars[groups['n1'][0]]['ansible_hostname'].hex</value>
+  </property>
 
 </configuration>
