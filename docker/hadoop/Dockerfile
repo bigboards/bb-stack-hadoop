@@ -1,6 +1,6 @@
-FROM bigboards/java-7-armv7l
+FROM bigboards/java-7-__arch__
 
-MAINTAINER bigboards
+MAINTAINER bigboards <hello@bigboards.io>
 
 USER root
 
@@ -17,32 +17,6 @@ ENV HADOOP_MAPRED_HOME /opt/hadoop
 ENV HADOOP_CONF_DIR /opt/hadoop/etc/hadoop
 ENV HDFS_CONF_DIR /opt/hadoop/etc/hadoop
 ENV YARN_CONF_DIR /opt/hadoop/etc/hadoop
-
-#RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/lib/jvm/java-7-oracle\nexport HADOOP_PREFIX=/opt/hadoop\nexport HADOOP_HOME=/opt/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
-#RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop/:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
-
-#RUN mkdir $HADOOP_PREFIX/input
-#RUN cp $HADOOP_PREFIX/etc/hadoop/*.xml $HADOOP_PREFIX/input
-
-# -- files are being installed using ansible. This means the container and software is installed as a docker repository,
-# -- while the configuration is mounted as a volume.
-#ADD files/core-site.xml $HADOOP_PREFIX/etc/hadoop/core-site.xml
-#ADD files/log4j.properties $HADOOP_PREFIX/etc/hadoop/log4j.properties
-#ADD files/hdfs-site.xml $HADOOP_PREFIX/etc/hadoop/hdfs-site.xml
-# ADD /etc/hosts /etc/hosts
-
-# fixing the libhadoop.so like a boss
-# RUN rm  /usr/local/hadoop/lib/native/*
-# RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.5.0.tar|tar -xz -C /usr/local/hadoop/lib/native/
-
-# workingaround docker.io build error
-#RUN ls -la /usr/local/hadoop/etc/hadoop/*-env.sh
-#RUN chmod +x /usr/local/hadoop/etc/hadoop/*-env.sh
-#RUN ls -la /usr/local/hadoop/etc/hadoop/*-env.sh
-
-#{% if ansible_fqdn in groups['host-coordinators'] %}
-#RUN $HADOOP_PREFIX/bin/hdfs namenode -format {{ ansible_local.hex.name }}
-#{% endif %}
 
 # copy the format script
 ADD hdfs-namenode-wrapper.sh /opt/hadoop/bin/hdfs-namenode-wrapper.sh
